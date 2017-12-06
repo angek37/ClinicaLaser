@@ -19,10 +19,10 @@
             <span class="nav-link-text">Usuarios</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="tables.html">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Pacientes</span>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Medicos">
+          <a class="nav-link" href="{{ url('medicos') }}">
+            <i class="fa fa-user-md"></i>
+            <span class="nav-link-text">Medicos</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">

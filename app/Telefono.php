@@ -8,7 +8,7 @@ class Telefono extends Model
 {
     protected $table = "Telefono";
 
-    protected $fillable = ['phonenumber','mobilenumber'];
+    protected $fillable = ['phonenumber', 'mobilenumber'];
 
     public $timestamps = false;
 

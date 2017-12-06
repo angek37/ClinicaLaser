@@ -23,5 +23,12 @@ Route::post('newUser', 'UsuariosController@insert');
 Route::get('deleteUser/{usuario}',["uses" => 'UsuariosController@delete',"as" => 'deleteUser']);
 Route::get('updateUser/{usuario}',["uses" => 'UsuariosController@update',"as" => 'updateUser']);
 Route::post('updateUser/updateUserAction', 'UsuariosController@updateAction');
+
+Route::resource('medicos', 'MedicosController');
+Route::post('nuevoMedico', 'MedicosController@insert');
+Route::get('deleteMedico/{medico}',["uses" => 'MedicosController@delete',"as" => 'deleteMedico']);
+Route::get('updateMedico/{medico}',["uses" => 'MedicosController@update',"as" => 'updateMedico']);
+Route::post('updateMedico/updateMedicoAction', 'MedicosController@updateAction');
+
 Route::post('signin','authentication@signin');
 Route::get('logout','authentication@logout');
