@@ -18,5 +18,10 @@ Route::get('panel',function () {
 	return view('panel');
 });
 
+Route::resource('usuarios', 'UsuariosController');
+Route::post('newUser', 'UsuariosController@insert');
+Route::get('deleteUser/{usuario}',["uses" => 'UsuariosController@delete',"as" => 'deleteUser']);
+Route::get('updateUser/{usuario}',["uses" => 'UsuariosController@update',"as" => 'updateUser']);
+Route::post('updateUser/updateUserAction', 'UsuariosController@updateAction');
 Route::post('signin','authentication@signin');
 Route::get('logout','authentication@logout');
