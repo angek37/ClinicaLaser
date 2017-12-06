@@ -24,7 +24,7 @@ class MedicosController extends Controller
     	$telefono -> save();
     	$medico -> telefono = $telefono -> id;
     	$medico ->save();
-    	return Redirect::back() -> with('success', 'Medico registrado correctamente!');
+    	return Redirect::back() -> with('success', 'Médico registrado correctamente!');
     }
 
     public function delete($medico)
@@ -49,6 +49,6 @@ class MedicosController extends Controller
     	$telefono = Telefono::find($medico->telefono);
     	$telefono -> fill($request->all());
     	$telefono -> save();
-    	return Redirect::back() -> with('success', 'Medico actualizado correctamente!');
+    	return Redirect::back() -> with('success', 'Médico actualizado correctamente!');
     }
 }

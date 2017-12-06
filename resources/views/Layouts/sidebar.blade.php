@@ -31,25 +31,11 @@
             <span class="nav-link-text">Pacientes</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-file"></i>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Citas">
+          <a class="nav-link" href="{{ url('citas') }}">
+            <i class="fa fa-heartbeat"></i>
             <span class="nav-link-text">Citas</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-            <li>
-              <a href="login.html">Login Page</a>
-            </li>
-            <li>
-              <a href="register.html">Registration Page</a>
-            </li>
-            <li>
-              <a href="forgot-password.html">Forgot Password Page</a>
-            </li>
-            <li>
-              <a href="blank.html">Blank Page</a>
-            </li>
-          </ul>
         </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">

@@ -8,7 +8,7 @@ class Cita extends Model
 {
     protected $table = "Cita";
 
-    protected $fillable = ['paciente', 'medico', 'fecha', 'receta', 'detalles', 'peso'];
+    protected $fillable = ['paciente', 'medico', 'fecha', 'hora','receta', 'detalles', 'peso'];
 
     public $timestamps = false;
 

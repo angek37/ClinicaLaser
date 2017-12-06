@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::resource('/', 'CitaController');
+
 Route::get('panel',function () {
 	return view('panel');
 });
@@ -35,6 +35,12 @@ Route::post('nuevoPaciente', 'PacientesController@insert');
 Route::get('deletePaciente/{paciente}',["uses" => 'PacientesController@delete',"as" => 'deletePaciente']);
 Route::get('updatePaciente/{paciente}',["uses" => 'PacientesController@update',"as" => 'updatePaciente']);
 Route::post('updatePaciente/updatePacienteAction', 'PacientesController@updateAction');
+
+Route::post('nuevaCita', 'CitaController@insert');
+Route::resource('citas', 'CitaController');
+Route::get('cancelCita/{cita}',["uses" => 'CitaController@cancel',"as" => 'cancelCita']);
+Route::get('completeCita/{paciente}',["uses" => 'CitaController@complete',"as" => 'completeCita']);
+Route::post('completeCita/completeCitaAction', 'CitaController@updateAction');
 
 Route::post('signin','authentication@signin');
 Route::get('logout','authentication@logout');

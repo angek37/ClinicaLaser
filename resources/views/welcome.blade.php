@@ -17,7 +17,7 @@
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
+    <script src="js/sweetalert.min.js"></script>
     <!-- Plugin CSS -->
     <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
 
@@ -51,7 +51,18 @@
         </div>
       </div>
     </nav>
+@if ($message = Session::get('success'))
 
+<script type="text/javascript">swal("Cita exitosa!", "{{$message}}", "success");</script>
+
+@endif
+
+@if ($message = Session::get('error'))
+
+<script type="text/javascript">swal("Error!", "{{$message}}", "error");</script>
+
+@endif
+    
     <!-- Header -->
     <header class="masthead bg-primary text-white text-center">
       <div class="container">
@@ -147,44 +158,46 @@
             <div class="col-lg-8 mx-auto">
               <h2 class="text-secondary text-uppercase mb-0">Cita</h2>
               <hr class="star-dark mb-5">
-             <form name="sentMessage" id="contactForm" novalidate="novalidate">
+
+             <form name="sentMessage" action="nuevaCita" method="POST" id="contactForm" novalidate="novalidate">
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Name</label>
-                  <input class="form-control" id="name" type="text" placeholder="Name" required="required" data-validation-required-message="Please enter your name.">
+                  <label>Día</label>
+                  <input type="date" name="fecha" value="{{ \Carbon\Carbon::createFromDate($db->year,$db->month,$db->day)->format('Y-m-d')}}" class="form-control">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Email Address</label>
-                  <input class="form-control" id="email" type="email" placeholder="Email Address" required="required" data-validation-required-message="Please enter your email address.">
+                  <label>Hora</label>
+                  <input type="time" name="hora" class="form-control" required>
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Phone Number</label>
-                  <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required="required" data-validation-required-message="Please enter your phone number.">
+                  <label>Clave de acceso</label>
+                  <input type="text" name="password" required class="form-control" placeholder="Clave de acceso">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Message</label>
-                  <textarea class="form-control" id="message" rows="5" placeholder="Message" required="required" data-validation-required-message="Please enter a message."></textarea>
+                  <label>Comentarios</label>
+                  <textarea class="form-control" id="message" name="detalles" rows="3" placeholder="Comentarios"></textarea>
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
               <br>
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div id="success"></div>
               <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
+                <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Registrar</button>
               </div>
             </form>
               <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
                 <i class="fa fa-close"></i>
-                Close Project</a>
+                Cerrar Ventana</a>
             </div>
           </div>
         </div>

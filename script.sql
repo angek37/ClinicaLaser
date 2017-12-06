@@ -35,6 +35,7 @@ id int auto_increment primary key not null,
 paciente int not null,
 medico int not null,
 fecha date not null,
+hora time not null,
 receta blob,
 detalles blob,
 peso decimal
@@ -52,3 +53,8 @@ alter table Cita add foreign key(paciente) references Paciente(id) on delete cas
 alter table Cita add foreign key(medico) references Medico(id) on delete cascade;
 alter table Paciente add foreign key(telefono) references Telefono(id) on delete cascade;
 alter table Medico add foreign key(telefono) references Telefono(id) on delete cascade;
+
+insert into rol(name) values('Administrador');
+insert into rol(name) values('Recepcionista');
+
+insert into Usuario values('admin', '123', 1);

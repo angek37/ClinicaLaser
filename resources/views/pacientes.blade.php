@@ -36,6 +36,7 @@ Panel de Administración | Pacientes
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
+                  <th>ID</th>
                   <th>Nombre</th>
                   <th>Apellidos</th>
                   <th>Médico Familiar</th>
@@ -48,6 +49,7 @@ Panel de Administración | Pacientes
               <tbody>
               @foreach($pacientes as $paciente)
               <tr>
+                <td>{{ $paciente->id }}</td>
               	<td>{{ $paciente->first_name }}</td>
               	<td>{{ $paciente->last_name }}</td>
               	<td>{{ $paciente->medNom }} {{ $paciente->medApe }}</td>
