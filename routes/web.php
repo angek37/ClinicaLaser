@@ -30,5 +30,11 @@ Route::get('deleteMedico/{medico}',["uses" => 'MedicosController@delete',"as" =>
 Route::get('updateMedico/{medico}',["uses" => 'MedicosController@update',"as" => 'updateMedico']);
 Route::post('updateMedico/updateMedicoAction', 'MedicosController@updateAction');
 
+Route::resource('pacientes', 'PacientesController');
+Route::post('nuevoPaciente', 'PacientesController@insert');
+Route::get('deletePaciente/{paciente}',["uses" => 'PacientesController@delete',"as" => 'deletePaciente']);
+Route::get('updatePaciente/{paciente}',["uses" => 'PacientesController@update',"as" => 'updatePaciente']);
+Route::post('updatePaciente/updatePacienteAction', 'PacientesController@updateAction');
+
 Route::post('signin','authentication@signin');
 Route::get('logout','authentication@logout');
