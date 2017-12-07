@@ -17,24 +17,19 @@ class CitaController extends Controller
 		$month = $date->month;
 		$year = $date->year;
 
-		$citas = Cita::select('cita.id','paciente.first_name as PasNom', 'paciente.last_name as PasApe', 'medico.first_name as MedNom', 'medico.last_name as MedApe', 'fecha', 'hora','detalles')
-		->join('Medico', 'medico.id', '=', 'cita.medico')
-		->join('Paciente', 'paciente.id', '=', 'cita.paciente')
-		->get();
-
-		return view('citas',['db' => $date], ['citas' => $citas]);
+		return view('welcome', ['db' => $date]);
 	}
 
 	public function insert(Request $request)
 	{
 		$paciente = Paciente::select('paciente.id as paciente', 'medico.id as medico')
 		-> join('medico','medico.id','=','paciente.med_fam')
-		-> where('password',$request->password);
+		-> where('password',$request->password)
+		-> first();
 		if(count($paciente) > 0){
-			$single = $paciente -> first();
 			$cita = new Cita($request->all());
-			$cita -> paciente = $single -> paciente;
-			$cita -> medico = $single -> medico;
+			$cita -> paciente = $paciente -> paciente;
+			$cita -> medico = $paciente -> medico;
 			$cita -> save();
 			$date = \Carbon\Carbon::parse($request->current_date);
 			$day = $date->day;

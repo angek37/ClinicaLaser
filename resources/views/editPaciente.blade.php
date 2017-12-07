@@ -29,8 +29,8 @@ Panel de Administración | Editar paciente
         </select><br>
          </div>
         </div>
-        <input type="text" name="mobilenumber" placeholder="Télefono Celular" required class="form-control" value="{{$mobilenumber}}"><br>
-        <input type="text" name="phonenumber" placeholder="Télefono" required class="form-control" value="{{$phonenumber}}"><br>
+        <input type="text" name="mobilenumber" placeholder="Télefono Celular" maxlength="10" required class="form-control" value="{{$mobilenumber}}"><br>
+        <input type="text" name="phonenumber" placeholder="Télefono" maxlength="7" required class="form-control" value="{{$phonenumber}}"><br>
       	<input type="hidden" name="_token" value="{{ csrf_token() }}">
       	<input type="submit" value="Actualizar" class="btn btn-info btn-block">
       </form><br>

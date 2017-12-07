@@ -11,9 +11,9 @@ Panel de Administración | Médicos
       <form method="POST" action="nuevoMedico">
       	<input type="text" name="first_name" placeholder="Nombre" required class="form-control"><br>
       	<input type="text" name="last_name" placeholder="Apellidos" required class="form-control"><br>
-      	<input type="text" name="cedula_prof" placeholder="Cédula profesional" required class="form-control"><br>
-      	<input type="text" name="mobilenumber" placeholder="Télefono Celular" required class="form-control"><br>
-      	<input type="text" name="phonenumber" placeholder="Télefono" required class="form-control"><br>
+      	<input type="text" name="cedula_prof" placeholder="Cédula profesional" maxlength="7" required class="form-control"><br>
+      	<input type="text" name="mobilenumber" placeholder="Télefono Celular" maxlength="10" required class="form-control"><br>
+      	<input type="text" name="phonenumber" placeholder="Télefono" required maxlength="7" class="form-control"><br>
       	<input type="hidden" name="_token" value="{{ csrf_token() }}">
       	<input type="submit" value="Registrar" class="btn btn-info btn-block">
       </form><br>

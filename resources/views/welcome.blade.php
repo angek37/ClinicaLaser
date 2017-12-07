@@ -23,6 +23,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/freelancer.css" rel="stylesheet">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
   </head>
 
@@ -163,7 +164,7 @@
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Día</label>
-                  <input type="date" name="fecha" value="{{ \Carbon\Carbon::createFromDate($db->year,$db->month,$db->day)->format('Y-m-d')}}" class="form-control">
+                  <input type="date" name="fecha" value="{{ \Carbon\Carbon::createFromDate($db->year,$db->month,$db->day)->format('Y-m-d')}}" class="form-control" required>
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
@@ -188,6 +189,9 @@
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
+              <br>
+              <input type="hidden" name="g-recaptcha-response">
+              <div class="g-recaptcha" data-sitekey="6Lce6DsUAAAAAD_CEX5O7cO8CCTTKnZwoj3WMqWp"></div>
               <br>
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div id="success"></div>

@@ -14,30 +14,29 @@
 
 Route::resource('/', 'CitaController');
 
-Route::get('panel',function () {
-	return view('panel');
-});
+Route::resource('panel', 'panelController', ['middleware' => 'LoginM']);
 
-Route::resource('usuarios', 'UsuariosController');
+Route::resource('usuarios', 'UsuariosController', ['middleware' => 'LoginM']);
 Route::post('newUser', 'UsuariosController@insert');
 Route::get('deleteUser/{usuario}',["uses" => 'UsuariosController@delete',"as" => 'deleteUser']);
 Route::get('updateUser/{usuario}',["uses" => 'UsuariosController@update',"as" => 'updateUser']);
 Route::post('updateUser/updateUserAction', 'UsuariosController@updateAction');
 
-Route::resource('medicos', 'MedicosController');
+Route::resource('medicos', 'MedicosController', ['middleware' => 'LoginM']);
 Route::post('nuevoMedico', 'MedicosController@insert');
 Route::get('deleteMedico/{medico}',["uses" => 'MedicosController@delete',"as" => 'deleteMedico']);
 Route::get('updateMedico/{medico}',["uses" => 'MedicosController@update',"as" => 'updateMedico']);
 Route::post('updateMedico/updateMedicoAction', 'MedicosController@updateAction');
 
-Route::resource('pacientes', 'PacientesController');
+Route::resource('pacientes', 'PacientesController', ['middleware' => 'LoginM']);
 Route::post('nuevoPaciente', 'PacientesController@insert');
 Route::get('deletePaciente/{paciente}',["uses" => 'PacientesController@delete',"as" => 'deletePaciente']);
 Route::get('updatePaciente/{paciente}',["uses" => 'PacientesController@update',"as" => 'updatePaciente']);
 Route::post('updatePaciente/updatePacienteAction', 'PacientesController@updateAction');
+Route::get('historyPaciente/{paciente}',["uses" => 'PacientesController@history',"as" => 'historyPaciente']);
 
 Route::post('nuevaCita', 'CitaController@insert');
-Route::resource('citas', 'CitaController');
+Route::resource('citas', 'CitaRedirect', ['middleware' => 'LoginM']);
 Route::get('cancelCita/{cita}',["uses" => 'CitaController@cancel',"as" => 'cancelCita']);
 Route::get('completeCita/{paciente}',["uses" => 'CitaController@complete',"as" => 'completeCita']);
 Route::post('completeCita/completeCitaAction', 'CitaController@updateAction');

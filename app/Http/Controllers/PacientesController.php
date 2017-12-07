@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Paciente;
 use App\Medico;
 use App\Telefono;
+use App\Cita;
 
 class PacientesController extends Controller
 {
@@ -61,5 +62,14 @@ class PacientesController extends Controller
     	$paciente -> save();
     	$telefono -> save();
     	return Redirect::back()->with('success','Los datos se han actualizado correctamente!');
+    }
+
+    public function history($paciente)
+    {
+        $historial = Cita::select('fecha', 'receta', 'peso')
+        ->where('paciente',$paciente)
+        ->get();
+        $pac = Paciente::find($paciente);
+        return view('historial', ['historiales' => $historial], ['paciente' => $pac]);
     }
 }

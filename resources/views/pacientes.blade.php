@@ -9,8 +9,8 @@ Panel de Administración | Pacientes
         </li>
       </ol>
       <form method="POST" action="nuevoPaciente">
-      	<input type="text" name="first_name" placeholder="Nombre" required class="form-control"><br>
-      	<input type="text" name="last_name" placeholder="Apellidos" required class="form-control"><br>
+      	<input type="text" name="first_name" pattern="^[a-zA-ZíóáéúÁÉÍÓÚ ]*" placeholder="Nombre" required class="form-control"><br>
+      	<input type="text" name="last_name" pattern="^[a-zA-ZíóáéúÁÉÍÓÚ ]*" placeholder="Apellidos" required class="form-control"><br>
       	<div class="row">
          <div class="col-sm-2">
            Médico Familiar:
@@ -23,8 +23,8 @@ Panel de Administración | Pacientes
         </select><br>
          </div>
         </div>
-        <input type="text" name="mobilenumber" placeholder="Télefono Celular" required class="form-control"><br>
-        <input type="text" name="phonenumber" placeholder="Télefono" required class="form-control"><br>
+        <input type="text" name="mobilenumber" pattern="^[0-9]*" placeholder="Télefono Celular" maxlength="10" required class="form-control"><br>
+        <input type="text" name="phonenumber" pattern="^[0-9]*" placeholder="Télefono" required maxlength="7" class="form-control"><br>
       	<input type="hidden" name="_token" value="{{ csrf_token() }}">
       	<input type="submit" value="Registrar" class="btn btn-info btn-block">
       </form><br>
@@ -38,7 +38,6 @@ Panel de Administración | Pacientes
                 <tr>
                   <th>ID</th>
                   <th>Nombre</th>
-                  <th>Apellidos</th>
                   <th>Médico Familiar</th>
                   <th>Clave de Acceso</th>
                   <th>Teléfono</th>
@@ -50,8 +49,7 @@ Panel de Administración | Pacientes
               @foreach($pacientes as $paciente)
               <tr>
                 <td>{{ $paciente->id }}</td>
-              	<td>{{ $paciente->first_name }}</td>
-              	<td>{{ $paciente->last_name }}</td>
+              	<td><a href="{{ route('historyPaciente', $paciente->id) }}">{{ $paciente->first_name }} {{ $paciente->last_name }}</a></td>
               	<td>{{ $paciente->medNom }} {{ $paciente->medApe }}</td>
                 <td>{{ $paciente->password }}</td>
               	<td>{{ $paciente->mobilenumber }}</td>

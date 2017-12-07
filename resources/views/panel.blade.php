@@ -10,6 +10,7 @@ Panel De administración
           Bienvenido
         </li>
       </ol>
+      <img src="img/Clinica.jpeg">
 @endsection
 @section('footer')
 @endsection

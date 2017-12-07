@@ -13,12 +13,14 @@
             <span class="nav-link-text">Inicio</span>
           </a>
         </li>
+        @if(session()->get('Rol') == 1)
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Users">
           <a class="nav-link" href="{{ url('usuarios') }}">
             <i class="fa fa-users"></i>
             <span class="nav-link-text">Usuarios</span>
           </a>
         </li>
+        @endif
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Medicos">
           <a class="nav-link" href="{{ url('medicos') }}">
             <i class="fa fa-user-md"></i>

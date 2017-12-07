@@ -9,7 +9,7 @@ Panel de Administración | Usuarios
         </li>
       </ol>
       <form method="POST" action="updateUserAction">
-      	<input type="text" name="name" placeholder="Nombre de usuario" class="form-control" value="{{ $usuario->name }}"><br>
+      	<input type="text" readonly name="name" placeholder="Nombre de usuario" class="form-control" value="{{ $usuario->name }}"><br>
       	<input type="password" name="password" placeholder="Contraseña" class="form-control" value="{{ $usuario->password }}" disabled><br>
       	<select name="rol" class="form-control">
 			@foreach($roles as $rol)

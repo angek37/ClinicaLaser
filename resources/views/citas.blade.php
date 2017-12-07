@@ -23,7 +23,7 @@ Panel de Administración | Citas
               @foreach($citas as $cita)
               <tr>
               	<td>{{ $cita->PasNom }} {{$cita->PasApe}}</td>
-              	<td>{{ $cita->MedNom }} {{$cita->MedNom}}</td>
+              	<td>{{ $cita->MedNom }} {{$cita->MedApe}}</td>
                 <td>{{$cita->fecha}}</td>
                 <td>{{$cita->hora}}</td>
                 <td>{{$cita->detalles}}</td>
