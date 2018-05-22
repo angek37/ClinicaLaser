@@ -14,8 +14,8 @@ class UsuariosController extends Controller
     {
     	$roles = Rol::select('id', 'name')
     	-> get();
-    	$usuarios = User::select('Usuario.name as usuario', 'rol.name as rol')
-    	-> join('Rol', 'rol.id', '=', 'Usuario.rol')
+    	$usuarios = User::select('Usuario.name as usuario', 'Rol.name as rol')
+    	-> join('Rol', 'Rol.id', '=', 'Usuario.rol')
     	-> get();
     	return view('usuarios', ['roles' => $roles], ['usuarios' => $usuarios]); 
     }
@@ -36,7 +36,7 @@ class UsuariosController extends Controller
 
     public function delete($usuario)
     {
-    	$userToDelete = DB::table('usuario')->where('name', $usuario)->delete();
+    	$userToDelete = DB::table('Usuario')->where('name', $usuario)->delete();
 		return Redirect::back()->with('warning','Usuario eliminado exitosamente!');
     }
 
@@ -45,7 +45,7 @@ class UsuariosController extends Controller
     	$roles = Rol::select('id', 'name')
     	-> get();
 
-    	$userToUpdate = DB::table('usuario')->where('name', $usuario)->first();
+    	$userToUpdate = DB::table('Usuario')->where('name', $usuario)->first();
     	return view('editUser', ['roles' => $roles], ['usuario' => $userToUpdate]);
     }
 

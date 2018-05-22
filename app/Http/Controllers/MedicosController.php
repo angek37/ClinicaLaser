@@ -11,8 +11,8 @@ class MedicosController extends Controller
 {
     public function index()
     {
-    	$medicos = Medico::select('medico.id', 'first_name', 'last_name', 'cedula_prof', 'phonenumber', 'mobilenumber')
-    	->join('Telefono', 'telefono.id', '=', 'medico.telefono')
+    	$medicos = Medico::select('Medico.id', 'first_name', 'last_name', 'cedula_prof', 'phonenumber', 'mobilenumber')
+    	->join('Telefono', 'Telefono.id', '=', 'Medico.telefono')
     	->get();
     	return view('medicos',['medicos' => $medicos]);
     }

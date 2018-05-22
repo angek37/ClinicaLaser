@@ -13,9 +13,9 @@ class PacientesController extends Controller
 {
     public function index()
     {
-    	$pacientes = Paciente::select('paciente.id', 'paciente.first_name', 'paciente.last_name', 'medico.first_name as medNom', 'medico.last_name as medApe', 'password', 'phonenumber', 'mobilenumber')
-    	->join('Medico','medico.id','=','paciente.med_fam')
-    	->join('Telefono', 'telefono.id', '=', 'paciente.telefono')
+    	$pacientes = Paciente::select('Paciente.id', 'Paciente.first_name', 'Paciente.last_name', 'Medico.first_name as medNom', 'Medico.last_name as medApe', 'password', 'phonenumber', 'mobilenumber')
+    	->join('Medico','Medico.id','=','Paciente.med_fam')
+    	->join('Telefono', 'Telefono.id', '=', 'Paciente.telefono')
     	->get();
 
     	$medicos = Medico::select('id', 'first_name', 'last_name')

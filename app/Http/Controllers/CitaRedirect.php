@@ -15,9 +15,9 @@ class CitaRedirect extends Controller
 		$day = $date->day;
 		$month = $date->month;
 		$year = $date->year;
-		$citas = Cita::select('cita.id','paciente.first_name as PasNom', 'paciente.last_name as PasApe', 'medico.first_name as MedNom', 'medico.last_name as MedApe', 'fecha', 'hora','detalles')
-		->join('Medico', 'medico.id', '=', 'cita.medico')
-		->join('Paciente', 'paciente.id', '=', 'cita.paciente')
+		$citas = Cita::select('Cita.id','Paciente.first_name as PasNom', 'Paciente.last_name as PasApe', 'Medico.first_name as MedNom', 'Medico.last_name as MedApe', 'fecha', 'hora','detalles')
+		->join('Medico', 'Medico.id', '=', 'Cita.medico')
+		->join('Paciente', 'Paciente.id', '=', 'Cita.paciente')
 		->get();
 
 		return view('citas',['db' => $date], ['citas' => $citas]);

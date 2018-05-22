@@ -22,8 +22,8 @@ class CitaController extends Controller
 
 	public function insert(Request $request)
 	{
-		$paciente = Paciente::select('paciente.id as paciente', 'medico.id as medico')
-		-> join('medico','medico.id','=','paciente.med_fam')
+		$paciente = Paciente::select('Paciente.id as paciente', 'Medico.id as medico')
+		-> join('Medico','Medico.id','=','Paciente.med_fam')
 		-> where('password',$request->password)
 		-> first();
 		if(count($paciente) > 0){
@@ -59,10 +59,10 @@ class CitaController extends Controller
 
 	public function complete($cita)
 	{
-		$ci = Cita::select('cita.id', 'paciente.first_name as NomPas', 'paciente.last_name as ApePas', 'medico.first_name as NomMed', 'medico.last_name as ApeMed', 'fecha', 'hora')
-		->join('paciente','paciente.id','=','cita.paciente')
-		->join('medico','medico.id','=','cita.medico')
-		->where('cita.id', $cita)
+		$ci = Cita::select('Cita.id', 'Paciente.first_name as NomPas', 'Paciente.last_name as ApePas', 'Medico.first_name as NomMed', 'Medico.last_name as ApeMed', 'fecha', 'hora')
+		->join('Paciente','Paciente.id','=','Cita.paciente')
+		->join('Medico','Medico.id','=','Cita.medico')
+		->where('Cita.id', $cita)
 		->first();
 		return view('FinishCita', ['cita' => $ci]);
 	}
